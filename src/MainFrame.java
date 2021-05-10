@@ -46,6 +46,53 @@ public class MainFrame extends JFrame {
                 }
             }
         };
+        menuBar.add(ballMenu);
+        ballMenu.add(addBallAction);
+
+        JMenu controlMenu = new JMenu("Управление");
+        menuBar.add(controlMenu);
+        Action pause2Action = new AbstractAction("Приостановить движение мячей малого радиуса"){
+            public void actionPerformed(ActionEvent event) {
+                field.pause();
+                pauseMenuItem.setEnabled(false);
+                pause2MenuItem.setEnabled(false);
+                resumeMenuItem.setEnabled(true);
+            }
+        };
+
+        pause2MenuItem = controlMenu.add(pause2Action);
+        pause2MenuItem.setEnabled(false);
+
+        Action pauseAction = new AbstractAction("Приостановить движение мячей"){
+            public void actionPerformed(ActionEvent event) {
+                field.pause1();
+                pauseMenuItem.setEnabled(false);
+                pause2MenuItem.setEnabled(false);
+                resumeMenuItem.setEnabled(true);
+            }
+        };
+
+        pauseMenuItem = controlMenu.add(pauseAction);
+        pauseMenuItem.setEnabled(false);
+
+        Action resumeAction = new AbstractAction("Возобновить движение") {
+            public void actionPerformed(ActionEvent event) {
+                field.resume();
+                pauseMenuItem.setEnabled(true);
+                if(field.Proverka())
+                    pause2MenuItem.setEnabled(true);
+                else
+                    pause2MenuItem.setEnabled(false);
+                resumeMenuItem.setEnabled(false);
+            }
+        };
+
+        resumeMenuItem = controlMenu.add(resumeAction);
+        resumeMenuItem.setEnabled(false);
+        // Добавить в центр граничной компоновки поле Field
+        getContentPane().add(field, BorderLayout.CENTER);
+    }
+    
     public static void main(String[] args) {
         // Создать и сделать видимым главное окно приложения
         MainFrame frame = new MainFrame();
