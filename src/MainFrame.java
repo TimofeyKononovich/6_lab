@@ -10,6 +10,18 @@ import java.awt.BorderLayout;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
+    // Константы, задающие размер окна приложения, если оно
+    // не распахнуто на весь экран
+    private static final int WIDTH = 700;
+    private static final int HEIGHT = 500;
+
+    private JMenuItem pauseMenuItem;
+    private JMenuItem pause2MenuItem;
+    private JMenuItem resumeMenuItem;
+
+    // Поле, по которому прыгают мячи
+    private Field field = new Field();
+    
     public static void main(String[] args) {
         // Создать и сделать видимым главное окно приложения
         MainFrame frame = new MainFrame();
