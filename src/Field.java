@@ -116,4 +116,54 @@ public class Field extends JPanel {
         if(paused1)
             wait();
     }
+    /*
+     * нажатие кнопки мыши — идентификатор MOUSE_PRESSED;
+     * отпускание кнопки мыши — идентификатор MOUSE_RELEASED;
+     * щелчок кнопкой мыши — идентификатор MOUSE_CLICKED (нажатие и отпускание не различаются);
+     * перемещение мыши — идентификатор MOUSE_MOVED;
+     * перемещение мыши с нажатой кнопкой — идентификатор MOUSE_DRAGGED;
+     * появление курсора мыши в компоненте — идентификатор MOUSE_ENTERED;
+     * выход курсора мыши из компонента — идентификатор MOUSE_EXITED.
+     *
+     *
+     */
+
+    public class MouseHandler extends MouseAdapter{
+        public MouseHandler() {
+
+        }
+
+        public void mouseClicked(MouseEvent e) {
+			/*if ((e.getModifiers() & MouseEvent.BUTTON2_MASK) == 0)
+					isDragged = true;*/
+        }
+
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        public void mousePressed(MouseEvent e) {
+            if ((e.getModifiers() & MouseEvent.BUTTON2_MASK) == 0)
+                if(rectangle.contains(e.getX(), e.getY())){
+                    isDragged = true;
+                    dragOffsetX = e.getX()-rectangle.getX();
+                    dragOffsetY = e.getY()-rectangle.getY();
+                }
+                else
+                    isDragged = false;
+            repaint();
+        }
+
+        public void mouseReleased(MouseEvent e) {
+            // Заканчиваем перетаскивание прямоугольника
+		/*	isDragged = false;
+			// Если идет перетаскивание, то изменяем координаты прямоугольгника
+			if( isDragged ) {
+				rectangle.setPos(e.getX(), e.getY());*/
+        }
+    }
 }
