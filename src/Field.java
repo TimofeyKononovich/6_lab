@@ -166,4 +166,24 @@ public class Field extends JPanel {
 				rectangle.setPos(e.getX(), e.getY());*/
         }
     }
+    public class MouseMotionHandler implements MouseMotionListener{
+
+        public void mouseDragged(MouseEvent e){
+            if (isDragged){
+                //if(rectangle.contains(e.getX(), e.getY())) {
+                // Устанавливаем флаг перетаскивания
+                //rectangle.setPos(e.getX(), e.getY());
+                rectangle.setPos(e.getX()-dragOffsetX, e.getY()-dragOffsetY);
+                //isDragged = true;
+
+			/*	System.out.println(e.getX());
+				rectangle.setPos(e.getX(), e.getY() );*/
+            }
+        }
+
+        public void mouseMoved(MouseEvent e){
+			/*if (isDragged)
+				rectangle.setPos(e.getX(), e.getY());*/
+        }
+    }
 }
