@@ -21,7 +21,31 @@ public class MainFrame extends JFrame {
 
     // Поле, по которому прыгают мячи
     private Field field = new Field();
-    
+
+    public MainFrame() {
+        super("Программирование и синхронизация потоков");
+        setSize(WIDTH, HEIGHT);
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        // Отцентрировать окно приложения на экране
+        setLocation((kit.getScreenSize().width - WIDTH)/2, (kit.getScreenSize().height - HEIGHT)/2);
+        // Установить начальное состояние окна развернутым на весь экран
+        // setExtendedState(MAXIMIZED_BOTH);
+
+        // Создать меню
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        JMenu ballMenu = new JMenu("Мячи");
+        Action addBallAction = new AbstractAction("Добавить мяч") {
+            public void actionPerformed(ActionEvent event) {
+                field.addBall();
+                if ((!pauseMenuItem.isEnabled() || !pause2MenuItem.isEnabled()) && !resumeMenuItem.isEnabled()) {
+                    // Ни один из пунктов меню не являются
+                    // доступными - сделать доступным "Паузу"
+                    pauseMenuItem.setEnabled(true);
+                    pause2MenuItem.setEnabled(field.Proverka());
+                }
+            }
+        };
     public static void main(String[] args) {
         // Создать и сделать видимым главное окно приложения
         MainFrame frame = new MainFrame();
