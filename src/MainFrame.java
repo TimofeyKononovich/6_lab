@@ -92,7 +92,7 @@ public class MainFrame extends JFrame {
         // Добавить в центр граничной компоновки поле Field
         getContentPane().add(field, BorderLayout.CENTER);
     }
-    
+
     public static void main(String[] args) {
         // Создать и сделать видимым главное окно приложения
         MainFrame frame = new MainFrame();
